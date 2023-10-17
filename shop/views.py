@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .models import Product
+from django.contrib.auth import authenticate,login,logout
+
 # Create your views here.
-def hello(request):
+def index(request):
     all_products = Product.objects.all()
 
     return render(request,'index.html',{'products':all_products})
