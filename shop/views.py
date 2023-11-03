@@ -11,3 +11,9 @@ def index(request):
 def about(request):
 
     return render(request=request,template_name='about.html')
+
+def product(request,pk):
+    product = Product.objects.get(id=pk)
+    context = {'product':product}
+    return render(request=request,template_name='product.html', context=context)
+
