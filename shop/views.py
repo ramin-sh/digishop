@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from .models import Product
+from django.shortcuts import render,redirect
+from .models import Product,Category
 from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages 
 
 # Create your views here.
 def index(request):
@@ -17,3 +18,15 @@ def product(request,pk):
     context = {'product':product}
     return render(request=request,template_name='product.html', context=context)
 
+
+def category(request,cat):
+    cat = cat.replace("-", " ")
+    try:
+        category = Category.objects.get(name=cat)
+        print(cat)
+        products = Product.objects.filter(Category=category)
+        print(products)
+        return render(request,"category.html",{"products":products,"category":category})
+    except:
+        messages.success(request,"دسته بندی وجود ندارد")
+        return  redirect("home")
