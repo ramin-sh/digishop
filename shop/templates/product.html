@@ -5,22 +5,43 @@
 <div class="container">
     <div class="card mb-3">
         <div class="row g-0">
-        <div class="col-md-4">
-            <img src="{{product.picture.url}}" class="img-fluid rounded-start" alt="...">
-        </div>
+            <div class="col-md-4">
+                <img src="{{product.picture.url}}" class="img-fluid rounded-start" alt="...">
+            </div>
         <div class="col-md-8">
-            <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.description}}</p>
-            {% if product.is_sale %}
-                <p class="card-text">قیمت:<del>{{product.price | intcomma}}</del>-{{product.sale_price| intcomma}}</p>
-            {% else %}
-                <p class="card-text">{{product.price | intcomma}}</p>
-            {% endif %}
+                <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                {% if product.is_sale %}
+                    <p class="card-text">قیمت:<del>{{product.price | intcomma}}</del>-{{product.sale_price| intcomma}}</p>
+                {% else %}
+                    <p class="card-text">{{product.price | intcomma}}</p>
+                {% endif %}
+                    <button type="button" href="{% url 'home'  %}" class="btn btn-secondary" value="{{ product.id }}" id="add-cart">افزودن به سبد خرید</button>
+                    <a href="{% url 'home'  %}" class="btn btn-secondary">بازگشت به صفحه اصلی</a>
+                </div>
             </div>
         </div>
-        </div>
-    <a href="{% url 'home'  %}">بازگشت به صفحه اصلی</a>
+    
 </div>
+<script>
+    $(document).on('click', '#add-cart', function(e){
+        e.preventDefault();
+        $.ajax({
+            type : 'POST',
+            url : '{% url 'cart_add' %}',
+            data:{
+                product_id: $('#add-cart').val(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action : 'post'
+            },
+            success: function(json){
+                console.log(json)
+            },
+            error: function(xhr,errmsg,err){
 
+            }
+        })
+    })
+</script>
 {% endblock content %}
