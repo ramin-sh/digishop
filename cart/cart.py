@@ -23,7 +23,7 @@ class Cart:
         return len(self.cart)
 
 
-    # def get_prods(self):
-    #     product_ids = self.cart.keys()
-    #     products = Product.objects.filter(id__in = product_ids)
-    #     return products 
+    def get_prods(self):
+        product_ids = self.cart.keys()
+        products = Product.objects.filter(id__in = product_ids)
+        return products 
