@@ -49,11 +49,11 @@ def login_user(request):
     
     return render(request,'login.html')
 
+
 def logout_user(request):
     logout(request)
     messages.success(request,"با موفقیت خارج شدید")
     return redirect("home")
-
 
 
 def signup_user(request):
