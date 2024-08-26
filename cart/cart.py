@@ -32,6 +32,26 @@ class Cart:
     def get_quants(self):
         quantities = self.cart
         return quantities
+    
+    def get_total(self):
+        product_ids = self.cart.keys()
+        products = Product.objects.filter(id__in=product_ids)
+        total = 0
+        for key,value in self.cart.items():
+            key = int(key)
+            for product in products:
+                if product.id == key:
+                    if product.is_sale:
+                        total = total + (product.sale_price*value)
+
+                    else:
+                        total = total + (product.price*value)
+
+        return total
+
+
+
+
 
     def update(self,product,quantity):
         product_id = str(product)
