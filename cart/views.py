@@ -3,6 +3,8 @@ from .cart import Cart
 from shop.models import Product
 from django.http import JsonResponse
 from .cart import Cart
+from django.contrib import messages 
+
 # Create your views here.
 def cart_summary(request):
     cart = Cart(request)
@@ -24,6 +26,7 @@ def cart_add(request):
         
         # response = JsonResponse({'Product name':product.name})
         response = JsonResponse({'qty':cart_quantitiy})
+        messages.success(request,"محصول مورد نظر به سبد خرید اضافه گردید")
         return response
 
 def cart_delete(request):
@@ -34,6 +37,8 @@ def cart_delete(request):
         
         cart.delete(product=product_id)
         response = JsonResponse({'product':product_id})
+        messages.success(request,"محصول مورد نظر از سبد خرید حذف گردید ")
+
         return response
 
 
