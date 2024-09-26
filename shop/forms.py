@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import  UserCreationForm,UserChangeForm
+from django.contrib.auth.forms import  UserCreationForm,UserChangeForm,SetPasswordForm
 from django import forms
 
 class SignUpform(UserCreationForm):
@@ -34,11 +34,24 @@ class SignUpform(UserCreationForm):
     #     model = User
     #     fields : {'first_name','last_name','email','username','password1','password2'}
 
+class UpdatePasswordForm(SetPasswordForm):
+    new_password1 = forms.CharField(
+        label="",widget=forms.PasswordInput(attrs={'class':'form-control','name':'password','type':'password','placeholder':'لطفا رمز عبور خود را وارد کنید'})
+    )
+
+    new_password2 = forms.CharField(
+        label="",widget=forms.PasswordInput(attrs={'class':'form-control','name':'password','type':'password','placeholder':'لطفا رمز عبور خود را دوباره وارد کنید'})
+
+    )
+    class Meta:
+        model =  User
+        fields = ['new_password1','new_password2']
+
 class UpdateUserform(UserChangeForm):
     password = None
     
     first_name = forms.CharField(
-        label="",max_length=50,widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'نام خود را وارد کنید'})
+         label="",max_length=50,widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'نام خود را وارد کنید'})
     )
 
     last_name = forms.CharField(

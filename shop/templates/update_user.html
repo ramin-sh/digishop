@@ -10,10 +10,11 @@
                     {% csrf_token %}
                         {{ user_form.as_p }}
                         <br><br>
-                    <button type="submit" class="btn btn-secondary">ویرایش</button>
+                    <button type="submit" class="btn btn-secondary">ثبت نام</button>
                   </form>
-            </div>
+                  <br>
+                  <a href="{% url 'update_password' %}" class="btn btn-warning"> ویرایش رمز عبور</a>
         
     </div>
 </div>
-{% endblock content %}
+{% endblock content %}ُ
