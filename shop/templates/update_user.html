@@ -4,7 +4,6 @@
 
 <div class="container">
 <div class="row">
-        
             <div class="cod-10" style="text-align: center" center>
                 <form method="post" action={% url 'update_user'  %}>
                     {% csrf_token %}
@@ -14,7 +13,6 @@
                   </form>
                   <br>
                   <a href="{% url 'update_password' %}" class="btn btn-warning"> ویرایش رمز عبور</a>
-        
-    </div>
+          </div>
 </div>
 {% endblock content %}ُ
