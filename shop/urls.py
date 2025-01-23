@@ -11,6 +11,7 @@ urlpatterns = [
     path('login/',login_user, name="login"),
     path('logout/',logout_user, name="logout"),
     path('update_user/',update_user, name="update_user"),
+    path('update_info/',update_info, name="update_info"),#new
     path('update_password/',update_password, name="update_password")
     
 ]
