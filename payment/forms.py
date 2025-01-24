@@ -1,6 +1,7 @@
 from django import forms
 from .models import ShippingAddress
 
+
 # class ShippingForm(forms.ModelForm):
 #       phone = forms.CharField(
 #         label="",widget=forms.TextInput(attrs={'class':'form-control','name':'password','type':'password','placeholder':'لطفا رمز عبور خود را وارد کنید'})
