@@ -8,6 +8,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+
 class Customer(models.Model):
     first_name =  models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -18,6 +19,7 @@ class Customer(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
     
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE)
     date_modified = models.DateTimeField(User, auto_now=True)
@@ -31,7 +33,8 @@ class Profile(models.Model):
         
     def __str__(self):
         return self.user.username
- #-------------------------------------
+
+
     
 class Product(models.Model):
     name = models.CharField(max_length=40)
@@ -46,8 +49,8 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+    
 class Order(models.Model):
-
     Product = models.ForeignKey(Product,on_delete=models.CASCADE)
     Customer  = models.ForeignKey(Customer,on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)

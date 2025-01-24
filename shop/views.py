@@ -15,10 +15,8 @@ def update_info(request):
 
         if form.is_valid():
             form.save()
-            
             messages.success(request,'اطلاعات کاربری شما ویرایش شد.')
-            return redirect('home')
-         
+            return redirect('home') 
         return render(request, 'update_info.html', {'form':form})
     else:
         messages.success(request,'ابتدا باید لاگین کنید')
@@ -26,12 +24,12 @@ def update_info(request):
 
 def index(request):
     all_products = Product.objects.all()
-
     return render(request,'index.html',{'products':all_products})
 
-def about(request):
 
+def about(request):
     return render(request=request,template_name='about.html')
+
 
 def update_user(request):
     if request.user.is_authenticated:
