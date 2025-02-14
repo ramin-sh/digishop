@@ -56,9 +56,14 @@
                 <!-- end -->
                 {% endfor %}
                 <h3>مجموع کل سفارشات:{{total}}</h3>
+                <a href="{% url 'checkout' %}" class="btn btn-success">صورتحساب</a>
                 {% else %}
+              
+                <br><br>
                     <center><h3 class="container">سبد خرید شما خالی است &#128531</h3></center>
                 {% endif %}
+                <br>
+                
         <br><br><br>
         <script>
             $(document).on('click', '.update-cart', function(e){

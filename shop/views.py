@@ -9,6 +9,7 @@ from .forms import SignUpform, UpdateUserform, UpdatePasswordForm,UpdateUserInfo
 # Create your views here.
 
 def update_info(request):
+    print(request.user.id)
     if request.user.is_authenticated:
         current_user = Profile.objects.get(user__id=request.user.id)
         form = UpdateUserInfo(request.POST or None, instance=current_user)
