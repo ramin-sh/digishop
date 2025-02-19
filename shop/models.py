@@ -35,7 +35,6 @@ class Profile(models.Model):
         return self.user.username
 
 
-    
 class Product(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=500,default='',blank=True,null=True)
